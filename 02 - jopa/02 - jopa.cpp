@@ -50,7 +50,7 @@ namespace QuickSort {
 
 // 1.2 Линейный поиск (Перебор для поиска максимума)
 int linearSearchForMax(const std::vector<int>& arr) {
-    if (arr.empty()) return -1; // Или выбросить исключение
+    if (arr.empty()) return -1;
     int maxElement = arr[0];
     for (size_t i = 1; i < arr.size(); ++i) {
         if (arr[i] > maxElement) {
@@ -70,7 +70,7 @@ int binarySearch(const std::vector<int>& sorted_arr, int target) {
         if (sorted_arr[mid] < target) low = mid + 1;
         else high = mid - 1;
     }
-    return -1; // Не найдено
+    return -1;
 }
 
 // --- БЛОК 2: ДЕМОНСТРАЦИОННЫЕ ФУНКЦИИ ---
@@ -107,9 +107,9 @@ void demonstrateQuicksort() {
 }
 
 void demonstrateLinearScan() {
-    const int N = 20000000; // Больший N, чтобы время было заметным
+    const int N = 20000000;
     std::cout << "--- Алгоритм #5: Перебор элементов O(n) ---" << std::endl;
-    std::cout << "\nДля задачи поиска максимума лучший, средний и худший случаи совпадают O(n)," << std::endl;
+    std::cout << "\nлучший, средний и худший случаи совпадают O(n)," << std::endl;
     std::cout << "так как необходимо просмотреть все элементы." << std::endl;
 
     std::vector<int> arr(N);
@@ -153,7 +153,7 @@ void demonstrateBinarySearch() {
     int index_worst = binarySearch(arr, target_worst);
     auto end_worst = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration_worst = end_worst - start_worst;
-    std::cout << "Ищем " << target_worst << ", результат: " << index_worst << " (не найден)." << std::endl;
+    std::cout << "Ищем " << target_worst << ", результат: " << index_worst << std::endl;
     std::cout << "Время выполнения: " << std::fixed << duration_worst.count() << " секунд (все еще почти мгновенно)." << std::endl;
 }
 
