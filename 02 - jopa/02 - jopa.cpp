@@ -1,8 +1,8 @@
 ﻿#include <iostream>
 #include <vector>
-#include <algorithm> // для std::generate, std::shuffle, std::min
-#include <random>    // для std::mt19937
-#include <chrono>    // для замера времени
+#include <algorithm>
+#include <random>
+#include <chrono>
 
 // --- ОБЩИЕ ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ---
 
@@ -17,6 +17,89 @@ void printVector(const std::vector<int>& vec, size_t limit = 15) {
 }
 
 // --- БЛОК 1: РЕАЛИЗАЦИИ АЛГОРИТМОВ ---
+namespace BubbleSort {
+    // Оптимизированная версия, которая останавливается, если массив уже отсортирован
+    void sort(std::vector<int>& arr) {
+        int n = arr.size();
+        bool swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    std::swap(arr[j], arr[j + 1]);
+                    swapped = true;
+                }
+            }
+            // Если на внутреннем цикле не было ни одной замены, массив отсортирован
+            if (!swapped) {
+                break;
+            }
+        }
+    }
+}
+
+// 1.2 Квадратичным выбором
+namespace SqrtSort {
+    void sort(std::vector<int>& arr) {
+        int n = arr.size();
+        if (n == 0) return;
+
+        // 1. Разделение на блоки
+        int blockSize = static_cast<int>(sqrt(n));
+        int blockCount = (n + blockSize - 1) / blockSize; // ceil(n / blockSize)
+
+        std::vector<int> result;
+        result.reserve(n);
+
+        // Вспомогательный массив для хранения ИНДЕКСОВ минимальных элементов в каждом блоке
+        std::vector<int> blockMins(blockCount, -1);
+        const int infinity = std::numeric_limits<int>::max();
+
+        // Функция для поиска нового минимума в "грязном" блоке
+        auto findMinInBlock = [&](int blockIndex) {
+            int start = blockIndex * blockSize;
+            int end = std::min((blockIndex + 1) * blockSize, n);
+            int minVal = infinity;
+            int minIdx = -1;
+
+            for (int i = start; i < end; ++i) {
+                if (arr[i] < minVal) {
+                    minVal = arr[i];
+                    minIdx = i;
+                }
+            }
+            blockMins[blockIndex] = minIdx;
+            };
+
+        // 2. Предварительный расчет: находим минимумы во всех блоках
+        for (int i = 0; i < blockCount; ++i) {
+            findMinInBlock(i);
+        }
+
+        // 3. Основной цикл: n раз выбираем глобальный минимум
+        for (int i = 0; i < n; ++i) {
+            int globalMinVal = infinity;
+            int globalMinIdx = -1;
+            int dirtyBlockIdx = -1;
+
+            for (int j = 0; j < blockCount; ++j) {
+                if (blockMins[j] != -1 && arr[blockMins[j]] < globalMinVal) {
+                    globalMinVal = arr[blockMins[j]];
+                    globalMinIdx = blockMins[j];
+                    dirtyBlockIdx = j;
+                }
+            }
+
+            result.push_back(globalMinVal);
+
+            arr[globalMinIdx] = infinity;
+            findMinInBlock(dirtyBlockIdx);
+        }
+
+        arr = result;
+    }
+}
+
 
 // 1.1 Быстрая сортировка (Quicksort)
 namespace QuickSort {
@@ -76,7 +159,7 @@ int binarySearch(const std::vector<int>& sorted_arr, int target) {
 // --- БЛОК 2: ДЕМОНСТРАЦИОННЫЕ ФУНКЦИИ ---
 
 void demonstrateQuicksort() {
-    const int N = 40000;
+    const int N = 400;
     std::cout << "--- Алгоритм #4: Быстрая сортировка O(n*log(n)) ---" << std::endl;
 
     std::cout << "\n1. Средний/Лучший случай: O(n*log(n)) на случайных данных" << std::endl;
@@ -157,10 +240,78 @@ void demonstrateBinarySearch() {
     std::cout << "Время выполнения: " << std::fixed << duration_worst.count() << " секунд (все еще почти мгновенно)." << std::endl;
 }
 
+void demonstrateBubbleSort() {
+    const int N = 10000;
+    std::cout << "--- Алгоритм: Сортировка пузырьком O(n^2) ---" << std::endl;
+
+    // Лучший случай: O(n)
+    std::cout << "\n1. Лучший случай: O(n) на уже отсортированных данных" << std::endl;
+    std::vector<int> best_case_arr(N);
+    std::generate(best_case_arr.begin(), best_case_arr.end(), [n = 0]() mutable { return n++; });
+
+    auto start_best = std::chrono::high_resolution_clock::now();
+    BubbleSort::sort(best_case_arr);
+    auto end_best = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration_best = end_best - start_best;
+    std::cout.precision(4);
+    std::cout << "Время выполнения: " << std::fixed << duration_best.count() << " секунд (почти мгновенно)." << std::endl;
+
+    // Худший случай: O(n^2)
+    std::cout << "\n2. Худший случай: O(n^2) на обратно отсортированных данных" << std::endl;
+    std::vector<int> worst_case_arr(N);
+    std::generate(worst_case_arr.begin(), worst_case_arr.end(), [n = 0]() mutable { return n++; });
+    std::reverse(worst_case_arr.begin(), worst_case_arr.end());
+
+    auto start_worst = std::chrono::high_resolution_clock::now();
+    BubbleSort::sort(worst_case_arr);
+    auto end_worst = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration_worst = end_worst - start_worst;
+    std::cout << "Время выполнения: " << std::fixed << duration_worst.count() << " секунд." << std::endl;
+    std::cout << "Сравнение: Худший случай оказался в " << (duration_worst.count() / duration_best.count()) << " раз медленнее среднего!" << std::endl;
+}
+
+void demonstrateSqrtSort() {
+    const int N = 10000;
+    std::cout << "--- Алгоритм: Квадратичный выбор (Сортировка методом sqrt-декомпозиции) O(n*sqrt(n)) ---" << std::endl;
+
+    // Лучший случай: O(n*sqrt(n))
+    std::cout << "\n1. Лучший случай: O(n*sqrt(n)) на уже отсортированных данных" << std::endl;
+    std::vector<int> best_case_arr(N);
+    std::generate(best_case_arr.begin(), best_case_arr.end(), [n = 0]() mutable { return n++; });
+
+    auto start_best = std::chrono::high_resolution_clock::now();
+    SqrtSort::sort(best_case_arr);
+    auto end_best = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration_best = end_best - start_best;
+    std::cout.precision(4);
+    std::cout << "Время выполнения: " << std::fixed << duration_best.count() << " секунд." << std::endl;
+
+    // Худший случай: O(n*sqrt(n))
+    std::cout << "\n2. Худший случай: O(n*sqrt(n)) на обратно отсортированных данных" << std::endl;
+    std::vector<int> worst_case_arr(N);
+    std::generate(worst_case_arr.begin(), worst_case_arr.end(), [n = 0]() mutable { return n++; });
+    std::reverse(worst_case_arr.begin(), worst_case_arr.end());
+
+    auto start_worst = std::chrono::high_resolution_clock::now();
+    SqrtSort::sort(worst_case_arr);
+    auto end_worst = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration_worst = end_worst - start_worst;
+    std::cout << "Время выполнения: " << std::fixed << duration_worst.count() << " секунд." << std::endl;
+    std::cout << "Сравнение: Худший случай оказался в " << (duration_worst.count() / duration_best.count()) << " раз медленнее среднего!" << std::endl;
+}
+
 int main() {
     setlocale(LC_ALL, "Russian");
 
     demonstrateQuicksort();
+
+    std::cout << "\n\n======================================================\n\n";
+
+    demonstrateBubbleSort();
+
+    std::cout << "\n\n======================================================\n\n";
+
+    demonstrateSqrtSort();
 
     std::cout << "\n\n======================================================\n\n";
 
