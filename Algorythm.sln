@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter", "..\Desai0\Wind
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 - jopa", "02 - jopa\02 - jopa.vcxproj", "{893A55AD-AC75-4FC6-97CB-8724FC8FF12C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Search", "Search\Search.vcxproj", "{ABF66558-E9E2-4145-8166-E429257A5A31}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03 - Search", "Search\Search.vcxproj", "{ABF66558-E9E2-4145-8166-E429257A5A31}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04 - pivo", "pivo\pivo.vcxproj", "{57CC6ABD-78ED-4005-9AA7-972F61C3F004}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,18 @@ Global
 		{ABF66558-E9E2-4145-8166-E429257A5A31}.Release|x64.Build.0 = Release|x64
 		{ABF66558-E9E2-4145-8166-E429257A5A31}.Release|x86.ActiveCfg = Release|Win32
 		{ABF66558-E9E2-4145-8166-E429257A5A31}.Release|x86.Build.0 = Release|Win32
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Debug|Any CPU.Build.0 = Debug|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Debug|x64.ActiveCfg = Debug|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Debug|x64.Build.0 = Debug|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Debug|x86.ActiveCfg = Debug|Win32
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Debug|x86.Build.0 = Debug|Win32
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Release|Any CPU.ActiveCfg = Release|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Release|Any CPU.Build.0 = Release|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Release|x64.ActiveCfg = Release|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Release|x64.Build.0 = Release|x64
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Release|x86.ActiveCfg = Release|Win32
+		{57CC6ABD-78ED-4005-9AA7-972F61C3F004}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

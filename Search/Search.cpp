@@ -46,7 +46,6 @@ int interpolationSearch(const std::vector<int>& arr, int key) {
     return -1;
 }
 
-// Реализация бинарного поиска
 int binarySearch(const std::vector<int>& arr, int key) {
     int low = 0;
     int high = arr.size() - 1;
