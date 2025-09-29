@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - Diykstra&BeymanAlg", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08 - Alg_k-Means", "08 - Alg_k-Means\08 - Alg_k-Means.vcxproj", "{189500A1-99A0-4C35-A2C3-8326BA62E1AC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - Decision Tree", "09 - Decision Tree\09 - Decision Tree.vcxproj", "{F9A687EC-62DD-4360-9523-E51C6B6BB343}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,18 @@ Global
 		{189500A1-99A0-4C35-A2C3-8326BA62E1AC}.Release|x64.Build.0 = Release|x64
 		{189500A1-99A0-4C35-A2C3-8326BA62E1AC}.Release|x86.ActiveCfg = Release|Win32
 		{189500A1-99A0-4C35-A2C3-8326BA62E1AC}.Release|x86.Build.0 = Release|Win32
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Debug|Any CPU.Build.0 = Debug|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Debug|x64.ActiveCfg = Debug|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Debug|x64.Build.0 = Debug|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Debug|x86.ActiveCfg = Debug|Win32
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Debug|x86.Build.0 = Debug|Win32
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Release|Any CPU.ActiveCfg = Release|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Release|Any CPU.Build.0 = Release|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Release|x64.ActiveCfg = Release|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Release|x64.Build.0 = Release|x64
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Release|x86.ActiveCfg = Release|Win32
+		{F9A687EC-62DD-4360-9523-E51C6B6BB343}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
