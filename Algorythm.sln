@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01 - Base", "Algorythm\Algorythm.vcxproj", "{1A282E57-CB0F-456B-9D9A-982FD8A6E246}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter", "..\Desai0\Windows-Forms\Homework\Converter\Converter.csproj", "{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 - jopa", "02 - jopa\02 - jopa.vcxproj", "{893A55AD-AC75-4FC6-97CB-8724FC8FF12C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03 - Search", "Search\Search.vcxproj", "{ABF66558-E9E2-4145-8166-E429257A5A31}"
@@ -22,6 +20,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - Backpack", "12 - Backpack\12 - Backpack.vcxproj", "{06F8EAA9-84A0-42B9-B863-0B6B0921F54A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "13 - Triangle", "13 - Triangle\13 - Triangle.vcxproj", "{9680C5BC-26A8-4739-A584-381F205B6499}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "14 - Text", "14 - Text\14 - Text.vcxproj", "{EFF2887A-2083-4C47-9A4A-A3077635552A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,18 +45,6 @@ Global
 		{1A282E57-CB0F-456B-9D9A-982FD8A6E246}.Release|x64.Build.0 = Release|x64
 		{1A282E57-CB0F-456B-9D9A-982FD8A6E246}.Release|x86.ActiveCfg = Release|Win32
 		{1A282E57-CB0F-456B-9D9A-982FD8A6E246}.Release|x86.Build.0 = Release|Win32
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Debug|x64.Build.0 = Debug|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Debug|x86.Build.0 = Debug|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Release|x64.ActiveCfg = Release|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Release|x64.Build.0 = Release|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Release|x86.ActiveCfg = Release|Any CPU
-		{830BA228-9FAE-4E2A-B19F-2BD1D138CE92}.Release|x86.Build.0 = Release|Any CPU
 		{893A55AD-AC75-4FC6-97CB-8724FC8FF12C}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{893A55AD-AC75-4FC6-97CB-8724FC8FF12C}.Debug|Any CPU.Build.0 = Debug|x64
 		{893A55AD-AC75-4FC6-97CB-8724FC8FF12C}.Debug|x64.ActiveCfg = Debug|x64
@@ -153,6 +141,18 @@ Global
 		{9680C5BC-26A8-4739-A584-381F205B6499}.Release|x64.Build.0 = Release|x64
 		{9680C5BC-26A8-4739-A584-381F205B6499}.Release|x86.ActiveCfg = Release|Win32
 		{9680C5BC-26A8-4739-A584-381F205B6499}.Release|x86.Build.0 = Release|Win32
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Debug|Any CPU.Build.0 = Debug|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Debug|x64.ActiveCfg = Debug|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Debug|x64.Build.0 = Debug|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Debug|x86.ActiveCfg = Debug|Win32
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Debug|x86.Build.0 = Debug|Win32
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Release|Any CPU.ActiveCfg = Release|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Release|Any CPU.Build.0 = Release|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Release|x64.ActiveCfg = Release|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Release|x64.Build.0 = Release|x64
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Release|x86.ActiveCfg = Release|Win32
+		{EFF2887A-2083-4C47-9A4A-A3077635552A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
