@@ -72,7 +72,13 @@ int levenshteinDistance(const std::string& s1, const std::string& s2) {
 
     for (int i = 1; i <= len1; ++i) {
         for (int j = 1; j <= len2; ++j) {
-            
+            int cost = (s1[i - 1] == s2[j - 1]) ? 0 : 1;
+
+            int insertion = d[i][j - 1] + 1;
+            int deletion = d[i - 1][j] + 1;
+            int substitution = d[i - 1][j - 1] + cost;
+
+            d[i][j] = std::min({ insertion, deletion, substitution });
         }
     }
 
