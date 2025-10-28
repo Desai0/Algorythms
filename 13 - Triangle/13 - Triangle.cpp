@@ -21,9 +21,8 @@ double cross_product(Point p1, Point p2, Point p3) {
     return (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x);
 }
 
-// находится ли точка p внутри треугольника t
 bool is_inside_triangle(Triangle t, Point p) {
-    //векторные произведения для каждой стороны треугольника
+    //векторные произведения для каждой стороны треуг
     double d1 = cross_product(t.p1, t.p2, p);
     double d2 = cross_product(t.p2, t.p3, p);
     double d3 = cross_product(t.p3, t.p1, p);
@@ -35,8 +34,7 @@ bool is_inside_triangle(Triangle t, Point p) {
     return !(has_neg && has_pos);
 }
 
-//полигон - акт вектор для трианг
-//алгоритм триангуляции
+//алг триангуляции
 std::vector<Triangle> triangulate(std::vector<Point> polygon) {
     std::vector<Triangle> triangles;
 
@@ -55,7 +53,7 @@ std::vector<Triangle> triangulate(std::vector<Point> polygon) {
                 continue;
             }
 
-            //не лежат ли другие вершины внутри этого треугольника
+            //лежат ли другие вершины внутри этого треуг
             bool is_valid_ear = true;
             for (const auto& p_check : polygon) {
                 //пропускаем вершины уха
@@ -75,13 +73,13 @@ std::vector<Triangle> triangulate(std::vector<Point> polygon) {
                 triangles.push_back(potential_ear);
                 polygon.erase(polygon.begin() + i);
                 ear_found = true;
-                break; //поиск уха заново с измененного многоугольника
+                break; //поиск уха заново с измененного многоуг
             }
         }
 
     }
 
-    //последний оставшийся треугольник
+    //последний треуг
     triangles.push_back({ polygon[0], polygon[1], polygon[2] });
 
     return triangles;
