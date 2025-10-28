@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "18 - DamerauLevenshtein", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "19 - GenAlg", "19 - GenAlg\19 - GenAlg.vcxproj", "{390E8F7D-B15C-4653-9593-D5A31D0A66ED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "20 - LZW", "20 - LZW\20 - LZW.vcxproj", "{DFB34032-45D5-4E29-89FF-682373712B07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -237,6 +239,18 @@ Global
 		{390E8F7D-B15C-4653-9593-D5A31D0A66ED}.Release|x64.Build.0 = Release|x64
 		{390E8F7D-B15C-4653-9593-D5A31D0A66ED}.Release|x86.ActiveCfg = Release|Win32
 		{390E8F7D-B15C-4653-9593-D5A31D0A66ED}.Release|x86.Build.0 = Release|Win32
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Debug|Any CPU.Build.0 = Debug|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Debug|x64.ActiveCfg = Debug|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Debug|x64.Build.0 = Debug|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Debug|x86.ActiveCfg = Debug|Win32
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Debug|x86.Build.0 = Debug|Win32
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Release|Any CPU.ActiveCfg = Release|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Release|Any CPU.Build.0 = Release|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Release|x64.ActiveCfg = Release|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Release|x64.Build.0 = Release|x64
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Release|x86.ActiveCfg = Release|Win32
+		{DFB34032-45D5-4E29-89FF-682373712B07}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
