@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
+#include <bitset>
 
 //xor над 2 строками битов
 std::string xor_op(std::string a, std::string b) {
@@ -23,33 +25,41 @@ std::string polynDiv(std::string data, std::string generator) {
     int data_len = data.length();
 
     std::string dividend = data;
-    for (int i = 0; i < gen_len - 1; ++i) {
-        dividend += "0";
+
+    for (int i = 0; i <= dividend.length() - gen_len; ) {
+        if (dividend[i] == '1') {
+            for (int j = 0; j < gen_len; j++) {
+                dividend[i + j] = (dividend[i + j] == generator[j]) ? '0' : '1';
+            }
+        }
+        i++;
     }
 
-    int dividend_len = dividend.length();
-
-    std::string temp_div = dividend.substr(0, gen_len);
-
-    for (int i = 0; i < data_len; ++i) {
-        if (temp_div[0] == '1') {
-            temp_div = xor_op(temp_div, generator);
-        }
-
-        //- левый бит
-        temp_div = temp_div.substr(1);
-
-        //+ следующий бит
-        if (i + gen_len < dividend_len) {
-            temp_div += dividend[i + gen_len];
-        }
-
-        return temp_div;
-    }
+    return dividend.substr(dividend.length() - (gen_len - 1));
 }
+
 
 bool is_zero(const std::string& s) {
     return std::all_of(s.begin(), s.end(), [](char c) { return c == '0'; });
+}
+
+std::vector<uint8_t> genTable(uint8_t polynomial) {
+    std::vector<uint8_t> crc_table(256);
+
+    for (int i = 0; i < 256; ++i) {
+        uint8_t current_byte = i;
+        for (int bit = 0; bit < 8; ++bit) {
+            //старший бит
+            if (current_byte & 0x80) {
+                current_byte = (current_byte << 1) ^ polynomial;
+            }
+            else {
+                current_byte <<= 1;
+            }
+        }
+        crc_table[i] = current_byte;
+    }
+    return crc_table;
 }
 
 
@@ -62,7 +72,12 @@ int main() {
     std::cout << "Дата: " << data << std::endl;
     std::cout << "Полином: " << generator << std::endl;
 
-    std::string ostatok = polynDiv(data, generator);
+    std::string dataWZ = data;
+    for (int i = 0; i < generator.length() - 1; ++i) {
+        dataWZ += "0";
+    }
+
+    std::string ostatok = polynDiv(dataWZ, generator);
 
     std::cout << "Результат деления (остаток): " << ostatok << std::endl;
 
@@ -80,9 +95,16 @@ int main() {
         std::cout << "Результат: ошибка" << std::endl;
     }
 
+    uint8_t crc8_polynomial = 0x07;
+    std::cout << "Полином CRC-8: 0x" << std::hex << (int)crc8_polynomial << std::dec << std::endl;
 
+    std::vector<uint8_t> crc_table = genTable(crc8_polynomial);
+
+    std::cout << "\nСгенерированная таблица:" << std::endl;
+    std::cout << std::hex << std::uppercase << std::setfill('0');
+    for (int i = 0; i < 16; ++i) {
+        std::cout << "0x" << std::setw(2) << static_cast<int>(crc_table[i]) << " ";
+    }
 
     return 0;
 }
-
-//остаток вставить в конец
