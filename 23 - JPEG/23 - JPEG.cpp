@@ -3,6 +3,7 @@
 #include <iomanip>
 
 const int N = 8;
+#define M_PI 3.14159265358979323846
 
 // таблица квантизации JPEG
 int quantTable[N][N] = {
